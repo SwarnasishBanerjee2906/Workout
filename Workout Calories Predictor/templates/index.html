@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calory Burn Predictor</title>
+    <style>
+        body {
+            background: linear-gradient(rgb(139,69,19,0.85), rgb(139,69,19,0.85)), url("{{ url_for('static', filename='workout.webp') }}") center center no-repeat;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: rgb(196, 164, 132);
+            color: rgb(92, 64, 51);
+            font-weight: bolder;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(20,35,81,0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input, select {
+            padding: 10px;
+            border: 1px solid rgb(92, 64, 51);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background-color: rgb(211, 211, 211);
+            color: rgb(92, 64, 51);
+        }
+        button {
+            padding: 10px;
+            background-color: rgb(92, 64, 51);
+            color: rgb(211, 211, 211);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Burn Calculator: 30-Minute Workout</h1>
+        <form action="/predict" method="post">
+            <label for="gender">Gender</label>
+            <select id="gender" name="Gender" required>
+                <option value="male">male</option>
+                <option value="female">female</option>
+            </select>
+            
+            <label for="age">Age</label>
+            <input type="number" step=1 id="age" min=18 max=80 name="Age" placeholder="Age" required>
+            
+            <label for="height">Height</label>
+            <input type="number" step=0.01 id="height" min=120 max=230 name="Height" placeholder="Height" required>
+            
+            <label for="weight">Weight</label>
+            <input type="number" step=0.01 id="weight" min=30 max=250 name="Weight" placeholder="Weight" required>
+            
+            <label for="duration">Duration</label>
+            <input type="number" step=1 id="duration" min=0 max=30 name="Duration" placeholder="Duration" required>
+
+            <label for="heart_rate">Heart Rate</label>
+            <input type="number" step=0.01 id="heart_rate" min=60 max=200 name="Heart_Rate" placeholder="HeartRate" required>
+
+            <label for="body_temp">Body Temperature(In Celcius)</label>
+            <input type="number" step=0.1 id="body_temp" min=37 max=42 name="Body_Temp" placeholder="Body temperature" required>
+            
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
